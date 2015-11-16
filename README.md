@@ -16,13 +16,13 @@ Currently at 24.82 MB.
 #### Build the Image
 
 ```bash
-docker build -t nodeginx .
+docker build -t alpinginx .
 ```
 
 #### Run a Container
 
 ```bash
-docker run -d -p 80:80 nodeginx
+docker run -d -p 80:80 alpinginx
 ```
 
-Assuming port 8080 was free on your host, you should be able to view the default Nginx welcome page at [http://ip](http://ip) 
+Assuming port 80 was free on your host, you should be able to view the default Nginx welcome page at [http://ip](http://ip) 
