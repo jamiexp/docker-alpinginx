@@ -7,6 +7,10 @@ Docker image which includes Nginx on Alpine Linux.
 
 ---
 
+Currently at 24.82 MB.
+
+---
+
 ### Usage 
 
 #### Build the Image
