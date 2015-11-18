@@ -3,26 +3,44 @@
 Docker image which includes Nginx on Alpine Linux.
 
 - [Alpine](http://www.alpinelinux.org/) - small footprint OS    
-- [Nginx](https://www.nginx.com) - non-blocking event-driven HTTP Server 
-
----
-
-Currently at 24.82 MB.
+- [Nginx](https://www.nginx.com) - non-blocking event-driven HTTP Server    
+- [DockerHub](https://hub.docker.com/r/jonjack/alpinginx/)
 
 ---
 
 ### Usage 
 
-#### Build the Image
+After executing the following, and ssuming port 80 was free on your host, you should be able to view the default Nginx welcome page at the IP of your host. 
 
 ```bash
-docker build -t alpinginx .
+docker run -d -p 80:80 jonjack/alpinginx
 ```
 
-#### Run a Container
+If you are using Kitematic for development you can probably request [192.168.99.100](http://192.168.99.100/)
+
+---
+
+### Mounting a Volume
+
+Mount a volume so that you can push your own content into the Nginx home path.
 
 ```bash
-docker run -d -p 80:80 alpinginx
+docker run -d -p 80:80 -v /host/path/nginx/html:/app/nginx/html jonjack/alpinginx
 ```
 
-Assuming port 80 was free on your host, you should be able to view the default Nginx welcome page at [http://ip](http://ip) 
+---
+
+### Why Another Image ?
+
+There are a few Nginx on Alpine images already, but I had some specific use case of my own:-
+
+- verifies the integrity of the Nginx archive
+- uses latest version of Nginx
+- Nginx docroot at `/app/nginx`
+- Removes any unnecessary leftovers of the build
+
+The Dockerfile is not overly pretty but the result is an image just shy of 25 MB.
+
+---
+
+Current size: 24.82 MB.
