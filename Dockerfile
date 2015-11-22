@@ -35,7 +35,10 @@ RUN apk upgrade --update && \
   mkdir -p /etc/nginx/conf.d && \
   apk del curl gnupg build-base && \
   rm /nginx-${NGINX_VERSION}.tar.gz /nginx-${NGINX_VERSION}.tar.gz.asc && \
-  rm -rf /nginx-${NGINX_VERSION} /usr/share/man
+  rm -rf \
+  /usr/share/man \
+  /var/cache/apk/* \
+  /nginx-${NGINX_VERSION} 
 
 EXPOSE 80 8080 443
 CMD ["nginx", "-g", "daemon off;"]

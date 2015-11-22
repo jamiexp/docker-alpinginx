@@ -5,7 +5,8 @@ Docker image which includes Nginx on Alpine Linux.
 - [Alpine](http://www.alpinelinux.org/) - small footprint OS    
 - [Nginx](https://www.nginx.com) - non-blocking event-driven HTTP Server    
 
-Nginx version: `1.9.7`
+Nginx version: `1.9.7`    
+Current size: `26 MB`
 
 ---
 
@@ -44,8 +45,3 @@ There are a few Nginx on Alpine images already, but I had some specific use case
 - Nginx docroot at `/app/nginx`
 - Removes any unnecessary leftovers of the build
 
-The Dockerfile is not overly pretty but the result is an image just shy of 25 MB.
-
----
-
-Current size: 25 MB.
