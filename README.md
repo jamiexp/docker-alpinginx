@@ -4,13 +4,12 @@ Docker image which includes Nginx on Alpine Linux.
 
 - [Alpine](http://www.alpinelinux.org/) - small footprint OS    
 - [Nginx](https://www.nginx.com) - non-blocking event-driven HTTP Server    
-- [DockerHub](https://hub.docker.com/r/jonjack/alpinginx/)
 
 ---
 
 ### Usage 
 
-After executing the following, and ssuming port 80 was free on your host, you should be able to view the default Nginx welcome page at the IP of your host. 
+After executing the following - and assuming port 80 was free on your host - you should be able to view the default Nginx welcome page at the IP of your host. 
 
 ```bash
 docker run -d -p 80:80 jonjack/alpinginx
@@ -27,6 +26,8 @@ Mount a volume so that you can push your own content into the Nginx home path.
 ```bash
 docker run -d -p 80:80 -v /host/path/nginx/html:/app/nginx/html jonjack/alpinginx
 ```
+
+Content put into `/host/path/nginx/html` on the host machine should then be accessible to the Nginx document root at `/app/nginx/html`.
 
 ---
 
