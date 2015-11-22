@@ -6,13 +6,18 @@ RUN apk upgrade --update && \
   apk add curl gnupg openssl-dev pcre-dev build-base && \
   curl -SLO http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
   curl -SLO http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz.asc && \
-  curl -SL http://nginx.org/keys/is.key | gpg --import && \
-  curl -SL http://nginx.org/keys/sb.key | gpg --import && \
-  curl -SL http://nginx.org/keys/maxim.key | gpg --import && \
-  curl -SL http://nginx.org/keys/glebius.key | gpg --import && \
-  curl -SL http://nginx.org/keys/mdounin.key | gpg --import && \
-  curl -SL http://nginx.org/keys/aalexeev.key | gpg --import && \
-  curl -SL http://nginx.org/keys/nginx_signing.key | gpg --import && \
+  set -ex \
+  && for key in \
+    4C2C85E705DC730833990C38A9376139A524C53E \
+    7338973069ED3F443F4D37DFA64FD5B17ADB39A8 \
+    65506C02EFC250F1B7A3D694ECF0E90B2C172083 \
+    6E067260B83DCF2CA93C566F518509686C7E5E82 \
+    B0F4253373F8F6F510D42178520A9993A1C052F8 \
+    A09CD539B8BB8CBE96E82BDFABD4D3B3F5806B4D \
+    573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
+  ; do \
+    gpg --keyserver hkp://http-keys.gnupg.net:80 --recv-keys "$key"; \
+  done && \
   gpg --verify nginx-${NGINX_VERSION}.tar.gz.asc nginx-${NGINX_VERSION}.tar.gz && \
   tar -xzf nginx-${NGINX_VERSION}.tar.gz && \
   cd nginx-${NGINX_VERSION} && \
