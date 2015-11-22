@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV NGINX_VERSION=1.9.6 NGINX_HOME=/app/nginx
+ENV NGINX_VERSION=1.9.7 NGINX_HOME=/app/nginx
 
 RUN apk upgrade --update && \
   apk add curl gnupg openssl-dev pcre-dev build-base && \
@@ -32,5 +32,5 @@ RUN apk upgrade --update && \
   rm /nginx-${NGINX_VERSION}.tar.gz /nginx-${NGINX_VERSION}.tar.gz.asc && \
   rm -rf /nginx-${NGINX_VERSION} /usr/share/man
 
-EXPOSE 80 443
+EXPOSE 80 8080 443
 CMD ["nginx", "-g", "daemon off;"]
