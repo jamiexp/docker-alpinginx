@@ -5,6 +5,8 @@ Docker image which includes Nginx on Alpine Linux.
 - [Alpine](http://www.alpinelinux.org/) - small footprint OS    
 - [Nginx](https://www.nginx.com) - non-blocking event-driven HTTP Server    
 
+Nginx version: `1.9.7`
+
 ---
 
 ### Usage 
@@ -15,7 +17,9 @@ After executing the following - and assuming port 80 was free on your host - you
 docker run -d -p 80:80 jonjack/alpinginx
 ```
 
-If you are using Kitematic for development you can probably request [192.168.99.100](http://192.168.99.100/)
+The image exposes the following ports:   
+
+`80` `8080` `443`
 
 ---
 
@@ -44,4 +48,4 @@ The Dockerfile is not overly pretty but the result is an image just shy of 25 MB
 
 ---
 
-Current size: 24.82 MB.
+Current size: 25 MB.
